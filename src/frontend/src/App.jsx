@@ -1,30 +1,26 @@
-import { useState } from 'react';
+// src/App.js
+import React, { useState } from 'react';
+import Login from './components/Login';
 
-function App() {
-  const [greeting, setGreeting] = useState('');
+const App = () => {
+  const [identity, setIdentity] = useState(null);
 
-  function handleSubmit(event) {
-    event.preventDefault();
-    const name = event.target.elements.name.value;
-    fetch(`${import.meta.env.VITE_CANISTER_URL}/greet?name=${name}`)
-      .then(response => response.json()).then((json) => {
-        setGreeting(json.greeting)
-      });
-  }
+  const handleLogin = (identity) => {
+    setIdentity(identity);
+  };
 
   return (
-    <main>
-      <img src="/logo2.svg" alt="DFINITY logo" />
-      <br />
-      <br />
-      <form action="#" onSubmit={handleSubmit}>
-        <label htmlFor="name">Enter your name: &nbsp;</label>
-        <input id="name" alt="Name" type="text" />
-        <button type="submit">Click Me!</button>
-      </form>
-      <section id="greeting">{greeting}</section>
-    </main >
+    <div>
+      {identity ? (
+        <div>
+          <h1>Welcome, you are logged in!</h1>
+          {/* Puedes utilizar la identidad del usuario para realizar acciones autenticadas */}
+        </div>
+      ) : (
+        <Login onLogin={handleLogin} />
+      )}
+    </div>
   );
-}
+};
 
 export default App;
