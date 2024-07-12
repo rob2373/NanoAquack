@@ -1,4 +1,3 @@
-// src/components/Login.js
 import React, { useState, useEffect } from 'react';
 import { AuthClient } from '@dfinity/auth-client';
 
@@ -26,10 +25,17 @@ const Login = ({ onLogin }) => {
   };
 
   return (
-    <div>
-      <button onClick={handleLogin}>Login with Internet Identity</button>
+    <div style={{ backgroundColor: '#A6E1FA', padding: '10px 0', textAlign: 'center', color: '#ffffff' }}>
+      <h1>Mi Sitio Web</h1>
+      <button className="btn btn-primary" onClick={handleLogin}>
+        Login with Internet Identity
+      </button>
     </div>
   );
 };
 
 export default Login;
+
+
+
+
