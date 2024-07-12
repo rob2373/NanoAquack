@@ -1,7 +1,7 @@
 // src/App.js
 import React, { useState } from 'react';
 import Login from './components/Login';
-
+import RegisterForm from './components/registro'
 const App = () => {
   const [identity, setIdentity] = useState(null);
 
@@ -12,11 +12,15 @@ const App = () => {
   return (
     <div>
       {identity ? (
-        <div>
-          <h1>Welcome, you are logged in!</h1>
-          {/* Puedes utilizar la identidad del usuario para realizar acciones autenticadas */}
-        </div>
-      ) : (
+    <div className="App">
+      <header className="App-header">
+        <h1>Formulario de Registro de Empresa</h1>
+      </header>
+      <main>
+        <RegisterForm />
+      </main>
+    </div>
+  ) : (
         <Login onLogin={handleLogin} />
       )}
     </div>
