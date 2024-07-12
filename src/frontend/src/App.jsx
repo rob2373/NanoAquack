@@ -14,7 +14,7 @@ const App = () => {
       {identity ? (
     <div className="App">
       <header className="App-header">
-        <h1>Formulario de Registro de Empresa</h1>
+
       </header>
       <main>
         <RegisterForm />
