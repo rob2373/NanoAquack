@@ -5,10 +5,10 @@
     width: 80%;
     max-width: 450px;
     margin: 0 auto; /* Centra horizontalmente */
-    margin-top: 50px; /* Espacio en la parte superior */
+    margin-top: 75px; /* Espacio en la parte superior */
     float: center;
     align-items: center;
-    margin-top: 20px;
+    
   }
   
   .form-title {
@@ -41,9 +41,9 @@
     background-color: #000; /* Negro */
     border-color: #000; /* Borde negro */
     width: 100%; /* Cambia esto a 100% si quieres que el botón ocupe todo el ancho del formulario */
+    height: 35px;
     color: #fff;
     display: block;
-    margin: 20px auto;
     font-family: 'Source Sans Pro';
   }
   
@@ -57,8 +57,7 @@
     width: 200px;
     height: 40px;
     float: left;
+    margin-left: 50px;
   }
 
-  h2.form-title{
-    margin-top: 50px;
-  }
+  

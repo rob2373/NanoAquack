@@ -1,14 +1,14 @@
-.register-form-container {
-    background-color: #90E0EF; /* Azul oscuro */
+.citas-form-container {
+    background-color: #1fc1ee; /* Azul oscuro */
     color: #ffffff; /* Texto blanco */
     border-radius: 10px;
     width: 80%;
     max-width: 450px;
     margin: 0 auto; /* Centra horizontalmente */
-    margin-top: 50px; /* Espacio en la parte superior */
+    margin-top: 70px; /* Espacio en la parte superior */
     float: center;
     align-items: center;
-    margin-top: 20px;
+
   }
   
   .form-title {
@@ -48,8 +48,8 @@
   }
   
   .submit-button:hover {
-    background-color: #ffc107; /* Amarillo */
-    border-color: #ffc107; /* Borde amarillo */
+    background-color: #90E0EF; /* Amarillo */
+    border-color: #90E0EF; /* Borde amarillo */
     color: #000; /* Texto negro al pasar el mouse */
     font-family: 'Source Sans Pro';
   }
@@ -57,13 +57,22 @@
     width: 200px;
     height: 40px;
     float: left;
+    margin-left: 50px;
   }
 
   h2.form-title{
     margin-top: 50px;
   }
   .citas{
-    width: 200px;
+    width: 60px;
     height: 40px;
     float: right;
+    margin-right: 50px;
+  }
+
+  .out{
+    width: 60px;
+    height: 40px;
+    float: right;
+    margin-right: 50px;
   }
