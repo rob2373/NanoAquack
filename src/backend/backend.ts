@@ -1,38 +1,102 @@
-import express from 'express';
+import express, {NextFunction} from 'express';
 import { Server, ic, query } from 'azle';
 import {
     HttpResponse,
     HttpTransformArgs,
 } from 'azle/canisters/management';
-
-
+export type Cita={
+    id_citas: number,
+    fecha: Date,
+    litros:number,
+    total:number,
+    metodoPago:string,
+    estado:boolean,
+    ubicacion:string
+}
+  
 export default Server(
     () => {
+        
         const app = express();
         app.use(express.json());
 
-        let phonebook = {
-            'Alice': { 'phone': '123-456-789', 'added': new Date() }
+        let citas : Cita[] = [{
+            id_citas:1,
+            fecha: new Date(2024,10,23),
+            litros: 100,
+            total: 7000,
+            metodoPago:'ckBTC',
+            estado:false,
+            ubicacion:'La Estación Rincón, Avenida Universidad 1001, El Potrero, 20400 Rincón de Romos, Ags.'
+        }];
+
+        app.get('/cita', (_req, res) => {
+            res.json(citas);
+        });
+
+        function getNextId(): number {
+            return Math.max(...citas.map(cita => cita.id_citas), 0) + 1;
+        }
+          // POST 
+    app.post('/cita', (req ,res ) => {
+        try {
+        const {litros,total,metodoPago,estado,ubicacion} = req.body
+        const nuevaCita: Cita ={ id_citas: getNextId(),
+            fecha: new Date(),
+            litros,
+            total,
+            metodoPago,
+            estado,
+            ubicacion
         };
+        citas.push(nuevaCita);
+        res.send("Cita Generada");
+    } catch (error) {
+        res.status(500).send("Error al crear cita: " );
+    }
+     
+    });
+     //UPTADE
+     app.put('/cita/:id', (req, res) => {
+        try {
+        const id_ci = parseInt(req.params.id);
+        const Cita = citas.find((Cita) => Cita.id_citas === id_ci);
 
-        app.get('/contacts', (_req, res) => {
-            res.json(phonebook);
-        });
+        if (!Cita) {
+            res.status(404).send("Not found");
+            return;
+        }
+ 
+        const updatedCitas = { ...Cita, ...req.body };
+        
+        citas = citas.map((b) => b.id_citas === updatedCitas.id_ci ? updatedCitas : b);
 
-        app.post('/contacts/add', (req, res) => {
-            if (Object.keys(phonebook).includes(req.body.name)) {
-                res.json({ error: 'Name already exists' });
-            } else {
-                const contact = { [req.body.name]: { phone: req.body.phone, added: new Date() } };
-                phonebook = { ...phonebook, ...contact };
-                res.json({ status: 'Ok' });
-            }
-        });
+        res.send("Cita Actualizada");
+    }
+    catch (error) {
+                res.status(500).send("Error al actualizar cita: ");
+    }
+});
+//DELETE
+app.delete("/cita/:id", (req, res) => {
+    try {
+    const id_ci = parseInt(req.params.id);
+    const Cita = citas.find((Cita) => Cita.id_citas === id_ci);
 
-        app.get('/greet', (req, res) => {
-            res.json({ greeting: `Hello, ${req.query.name}` });
-        });
+    if (!Cita) {
+        res.status(404).send("Not found");
+        return;
+    }
+    citas = citas.filter((Cita) => Cita.id_citas !== id_ci);
+    res.send("Cita Eliminada");
+    } catch (error) {
+     res.status(500).send("Error al eliminar cita: ")
+    }
+    });
 
+
+
+        
         app.post('/price-oracle', async (req, res) => {
             ic.setOutgoingHttpOptions({
                 maxResponseBytes: 20_000n,
