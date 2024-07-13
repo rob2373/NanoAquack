@@ -1,0 +1,24 @@
+.citas{
+    width: 60px;
+    height: 40px;
+    float: right;
+    margin-right: 50px;
+  }
+  .logo {
+    width: 200px;
+    height: 40px;
+    float: left;
+    margin-left: 50px;
+  }
+  .citas-form-container {
+    background-color: #1fc1ee; /* Azul oscuro */
+    color: #ffffff; /* Texto blanco */
+    border-radius: 10px;
+    width: 80%;
+    max-width: 450px;
+    margin: 0 auto; /* Centra horizontalmente */
+    margin-top: 70px; /* Espacio en la parte superior */
+    float: center;
+    align-items: center;
+
+  }

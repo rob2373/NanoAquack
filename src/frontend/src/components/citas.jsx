@@ -50,7 +50,7 @@ const RegisterForm = () => {
 
   // Redirigir si el formulario ha sido enviado correctamente
   if (formSubmitted) {
-    return <Redirect to="/Login" />; // Reemplaza "/ruta-de-tu-pagina" con la ruta real a donde deseas redirigir
+    return <Redirect to="" />; // Reemplaza "/ruta-de-tu-pagina" con la ruta real a donde deseas redirigir
   }
 
   return (
@@ -60,7 +60,8 @@ const RegisterForm = () => {
           src={out} 
           alt="out" 
           className="out" 
-          onClick={handleLogout} // Llama a la función de logout al hacer clic
+          onClick={handleLogout}
+           // Llama a la función de logout al hacer clic
         />
         <img src={citas} alt="citas" className="citas" />
         <img src={logo} alt="Logo" className="logo" />

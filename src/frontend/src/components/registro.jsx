@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Container, Form, Button } from 'react-bootstrap';
-import Citas from './citas'; // Asegúrate de que la ruta sea correcta
+import Citas from './nanoDk'; // Asegúrate de que la ruta sea correcta
 import '../components/registro.css'; // Importa el archivo de estilos CSS
 import logo from '/log.png';
 import logoo from '/ic.png';
@@ -66,7 +66,7 @@ const RegisterForm = () => {
               type="text"
               placeholder="Ingrese el nombre de la empresa"
               name="companyName"
-              value={formData.companyName}
+            
               onChange={handleChange}
               className="form-input"
               required
@@ -119,6 +119,7 @@ const RegisterForm = () => {
           </Form.Group>
           <br />
         </Form>
+        <br />
         <Button variant="primary" className="submit-button" onClick={handleButtonClick}>
           Registrar
         </Button>
